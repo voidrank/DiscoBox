@@ -1,0 +1,1 @@
+python ./tools/test_corr.py configs/discobox/discobox_solov2_voc_r50_corr_app7_fgp7_bgp7_fpn_6x.py ./work_dirs/discobox_voc_r50_corr_app7_fgp7_bgp7_fpn_6x/epoch_72.pth --img_side 400 --fea_layer_id 3
