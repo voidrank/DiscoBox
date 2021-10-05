@@ -4,20 +4,19 @@
 ## DiscoBox: Weakly Supervised Instance Segmentation and Semantic Correspondence from Box Supervision
 
 <div style="bottom:20px" align="center">
-  <img src="resources/discobox-intro.png" width="600"/>
+  <img src="resources/discobox-intro.png" width="400"/>
 </div>
 
 
 
-[ [`Paper`](https://arxiv.org/abs/2105.06464) ] [[`Project page`]()] [[`Demo (Youtube)`]]() [[`Demo (Bilibili)`]]()
+### [Paper](https://arxiv.org/abs/2105.06464) | [Project page]() | [Demo (Youtube)]() | [Demo (Bilibili)]()
 
-DiscoBox: Weakly Supervised Instance Segmentation and Semantic Correspondence from Box Supervision.
+DiscoBox: Weakly Supervised Instance Segmentation and Semantic Correspondence from Box Supervision.<br>
+[Shiyi Lan](https://voidrank.github.io/), [Zhiding Yu](https://chrisding.github.io/), [Chris Choy](https://chrischoy.github.io/), [Subhashree Radhakrishnan](https://www.linkedin.com/in/subhashree-radhakrishnan-b0b0048b), [Guilin Liu](https://liuguilin1225.github.io/), [Yuke Zhu](https://www.cs.utexas.edu/~yukez/), [Larry Davis](http://users.umiacs.umd.edu/~lsd/), [Anima Anandkumar](http://tensorlab.cms.caltech.edu/users/anima/)<br>
+International Conference on Computer Vision (ICCV) 2021
 
-[Shiyi Lan](https://voidrank.github.io/), [Zhiding Yu](https://chrisding.github.io/), [Christopher Choy](https://chrischoy.github.io/), [Subhashree Radhakrishnan](https://www.linkedin.com/in/subhashree-radhakrishnan-b0b0048b), [Guilin Liu](https://liuguilin1225.github.io/), [Yuke Zhu](https://www.cs.utexas.edu/~yukez/), [Larry S. Davis](http://users.umiacs.umd.edu/~lsd/), [Anima Anandkumar](http://tensorlab.cms.caltech.edu/users/anima/)
-
-This repository contains the official Pytorch implementation of training & evaluation code and pretrained models for [DiscoBox](https://arxiv.org/abs/2105.06464)
-
-DiscoBox is a novel framework that jointly learns instance segmentation and semantic correspondence using bounding box supervision.
+This repository contains the official Pytorch implementation of training & evaluation code and pretrained models for [DiscoBox](https://arxiv.org/abs/2105.06464).
+DiscoBox is a state of the art framework that can jointly predict high quality instance segmentation and semantic correspondence from box annotations.
 
 We use [MMDetection v2.10.0](https://github.com/open-mmlab/mmdetection/tree/v2.10.0) as the codebase.
 
@@ -56,43 +55,41 @@ We also evaluate the models in the section `Results on COCO val 2017` with the *
 | ResNeXt-101-DCN |     [download](https://drive.google.com/file/d/1vyfdMhQkvGBHvp3LKUlUUcFcHNJU15Dv/view?usp=sharing)    | 37.9 |  61.4 |  40.0 |   18.0   |    41.1   |   53.9   |
 
 
-## Basic Usage
+## Training
 
-### Training
+### COCO 
 
-#### COCO fp16 using 8 GPUs 
-
-ResNet-50: 
+ResNet-50 (8 GPUs): 
 
 ```
 bash tools/dist_train.sh \
      configs/discobox/discobox_solov2_r50_fpn_3x.py 8
 ```
 
-ResNet-101-DCN: 
+ResNet-101-DCN (8 GPUs): 
 
 ```
 bash tools/dist_train.sh \
      configs/discobox/discobox_solov2_r101_dcn_fpn_3x.py 8
 ```
 
-ResNeXt-101-DCN: 
+ResNeXt-101-DCN (8 GPUs): 
 
 ```
 bash tools/dist_train.sh \
      configs/discobox/discobox_solov2_x101_dcn_fpn_3x.py 8
 ```
 
-#### Pascal VOC 2012 fp16 using 4 GPUs
+### Pascal VOC 2012
 
-ResNet-50:
+ResNet-50 (4 GPUs):
 
 ```
 bash tools/dist_train.sh \
      configs/discobox/discobox_solov2_voc_r50_fpn_6x.py 4
 ```
 
-ResNet-101:
+ResNet-101 (4 GPUs):
 
 ```
 bash tools/dist_train.sh \
@@ -100,12 +97,12 @@ bash tools/dist_train.sh \
 ```
 
 
-### Testing
+## Testing
 
  
-#### COCO
+### COCO
 
-ResNet-50: 
+ResNet-50 (8 GPUs): 
 
 ```
 bash tools/dist_test.sh \
@@ -113,7 +110,7 @@ bash tools/dist_test.sh \
      work_dirs/coco_r50_fpn_3x.pth 8 --eval segm
 ```
 
-ResNet-101-DCN: 
+ResNet-101-DCN (8 GPUs): 
 
 ```
 bash tools/dist_test.sh \
@@ -121,7 +118,7 @@ bash tools/dist_test.sh \
      work_dirs/coco_r101_dcn_fpn_3x.pth 8 --eval segm
 ```
 
-ResNeXt-101-DCN: 
+ResNeXt-101-DCN (GPUs): 
 
 ```
 bash tools/dist_test.sh \
@@ -131,9 +128,9 @@ bash tools/dist_test.sh \
 
 
 
-#### Pascal VOC 2012 (COCO API)
+### Pascal VOC 2012 (COCO API)
 
-ResNet-50: 
+ResNet-50 (4 GPUs): 
 
 ```
 bash tools/dist_test.sh \
@@ -141,7 +138,7 @@ bash tools/dist_test.sh \
      work_dirs/voc_r50_6x.pth 4 --eval segm
 ```
 
-ResNet-101: 
+ResNet-101 (4 GPUs): 
 
 ```
 bash tools/dist_test.sh \
@@ -149,11 +146,11 @@ bash tools/dist_test.sh \
      work_dirs/voc_r101_6x.pth 4 --eval segm
 ```
 
-#### Pascal VOC 2012 (Matlab)
+### Pascal VOC 2012 (Matlab)
 
 ***Step 1: generate results***
 
-ResNet-50: 
+ResNet-50 (4 GPUs): 
 
 ```
 bash tools/dist_test.sh \
@@ -163,7 +160,7 @@ bash tools/dist_test.sh \
      --options "jsonfile_prefix=work_dirs/voc_r50_results.json"
 ```
 
-ResNet-101: 
+ResNet-101 (4 GPUs): 
 
 ```
 bash tools/dist_test.sh \
@@ -192,7 +189,7 @@ python tools/json2mat.pywork_dirs/voc_r101_results.json work_dirs/voc_r101_resul
 Please visit [BBTP](https://github.com/chengchunhsu/WSIS_BBTP) for the evaluation code written in Matlab.
 
 
-#### PF-Pascal
+### PF-Pascal
 
 Please visit [this repository](https://github.com/voidrank/SCOT).
 
