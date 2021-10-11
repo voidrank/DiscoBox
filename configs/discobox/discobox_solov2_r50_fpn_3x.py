@@ -1,4 +1,10 @@
-# model settings
+# ---------------------------------------------------------------
+# Copyright (c) 2021, NVIDIA CORPORATION. All rights reserved.
+#
+# This work is licensed under the NVIDIA Source Code License
+# for DiscoBox. To view a copy of this license, see the LICENSE file.
+# ---------------------------------------------------------------
+
 fp16 = dict(loss_scale=512.)
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
