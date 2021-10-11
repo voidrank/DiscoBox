@@ -1,1 +1,0 @@
-python ./tools/test_corr.py configs/dcn/mask_rcnn_r101_fpn_dconv_c3-c5_1x_coco.py ../models/mmdetection/checkpoints/mask_rcnn_r101_fpn_dconv_c3-c5_1x_coco_20200216-a71f5bce.pth --img_side 400 --bsz 4 --fea_layer_id 3 --benchmark pfpascal --alpha 0.1
